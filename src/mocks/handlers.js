@@ -15,4 +15,18 @@ export const handlers = [
 			])
 		);
 	}),
+	rest.get('http://localhost:3030/toppings', (req, res, ctx) => {
+		return res(
+			ctx.json([
+				{
+					name: 'Mushrooms',
+					imagePath: '/images/mushrooms.png',
+				},
+				{
+					name: 'Basilic',
+					imagePath: '/images/basilic.png',
+				},
+			])
+		);
+	}),
 ];

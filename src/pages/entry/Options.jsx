@@ -3,7 +3,7 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Option from './Option';
 
-const Options = ({ optionType }) => {
+const Options = ({ optionType = 'toppings' }) => {
 	const [items, setItems] = useState([]);
 
 	useEffect(() => {
