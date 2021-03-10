@@ -1,13 +1,7 @@
 import './App.css';
 
-import SummaryForm from './pages/summary/SummaryForm.jsx';
-
-function App() {
-	return (
-		<div className='App'>
-			<SummaryForm />
-		</div>
-	);
+function App({ children }) {
+	return <div className='App'>{children}</div>;
 }
 
 export default App;

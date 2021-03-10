@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
@@ -26,7 +26,7 @@ const SummaryForm = () => {
 	);
 
 	return (
-		<Form action="/order">
+		<Form action='/order'>
 			<Form.Group controlId='terms-and-conditions'>
 				<Form.Check
 					type='checkbox'
