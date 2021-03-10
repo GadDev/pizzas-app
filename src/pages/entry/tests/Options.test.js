@@ -7,26 +7,26 @@ test('displays image for each pizzas option from server', async () => {
 
 	// find images
 	const pizzaImages = await screen.findAllByRole('img', {
-		name: /pizzas$/i,
+		name: /pizza$/i,
 	});
 	expect(pizzaImages).toHaveLength(2);
 	//confirm alt text of images
 	const altText = pizzaImages.map((element) => element.alt);
-	expect(altText).toEqual(['American pizzas', 'Fiorentina pizzas']);
+	expect(altText).toEqual(['American pizza', 'Fiorentina pizza']);
 });
 
 test('display image for each toppings option from server', async () => {
 	render(<Options optionType='toppings' />);
 
 	const toppingsImage = await screen.findAllByRole('img', {
-		name: /toppings$/i,
+		name: /topping$/i,
 	});
 
 	expect(toppingsImage).toHaveLength(3);
 	const altText = toppingsImage.map((element) => element.alt);
 	expect(altText).toEqual([
-		'Mushrooms toppings',
-		'Basilic toppings',
-		'Olive toppings',
+		'Mushrooms topping',
+		'Basilic topping',
+		'Olive topping',
 	]);
 });
