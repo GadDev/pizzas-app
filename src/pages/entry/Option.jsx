@@ -7,7 +7,7 @@ const Option = ({ name, image }) => {
 			<img
 				style={{ width: '75%' }}
 				src={`http://localhost:3030/${image}`}
-				alt={`pizza ${name}`}
+				alt={`${name} pizza`}
 			/>
 		</Col>
 	);
