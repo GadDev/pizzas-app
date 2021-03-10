@@ -1,33 +1,29 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Option from './Option';
 
-const Options = ({ optionType = 'toppings' }) => {
-	const [items, setItems] = useState([]);
+import useAxios from '../../hooks/useAxios';
 
-	useEffect(() => {
-		axios
-			.get(`http://localhost:3030/${optionType}`)
-			.then((response) => {
-				setItems(response.data);
-			})
-			.catch((error) => {
-				throw new Error(error.message);
-			});
-	}, [optionType]);
-	const optionsItems = items.map(({ name, imagePath }) => {
-		return <Option key={name} name={name} image={imagePath} />;
+const Options = ({ optionType = 'toppings' }) => {
+	const { response, error, loading } = useAxios(
+		`http://localhost:3030/${optionType}`
+	);
+	const optionsItems = response?.map(({ name, imagePath }) => {
+		return (
+			<Option
+				key={name}
+				name={name}
+				image={imagePath}
+				type={optionType}
+			/>
+		);
 	});
-	return (
+
+	return error ? (
+		<p>Something went wrong...</p>
+	) : (
 		<Row>
-			{!items.length ? (
-				<span style={{ width: '100%', textAlign: 'center' }}>
-					Loading...
-				</span>
-			) : (
-				optionsItems
-			)}
+			{loading && <p>Loading...</p>}
+			{response && optionsItems}
 		</Row>
 	);
 };

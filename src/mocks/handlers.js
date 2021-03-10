@@ -26,6 +26,10 @@ export const handlers = [
 					name: 'Basilic',
 					imagePath: '/images/basilic.png',
 				},
+				{
+					name: 'Olive',
+					imagePath: '/images/olive.png',
+				},
 			])
 		);
 	}),
