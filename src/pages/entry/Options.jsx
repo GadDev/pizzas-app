@@ -2,6 +2,7 @@ import Row from 'react-bootstrap/Row';
 import PizzaOption from './PizzaOption';
 import ToppingOption from './ToppingOption';
 import useAxios from '../../hooks/useAxios';
+import AlertBanner from '../common/AlertBanner';
 
 const Options = ({ optionType = 'pizzas' }) => {
 	const { response, error, loading } = useAxios(
@@ -13,7 +14,7 @@ const Options = ({ optionType = 'pizzas' }) => {
 	});
 
 	return error ? (
-		<p>Something went wrong...</p>
+		<AlertBanner variant="" />
 	) : (
 		<Row>
 			{loading && <p>Loading...</p>}
