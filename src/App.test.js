@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn Options with 2 image', async () => {
+test('renders learn Options with 2 pizza', async () => {
 	render(<App />);
 	const pizzaImages = await screen.findAllByRole('img', {
 		name: /pizza$/i,
