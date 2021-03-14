@@ -11,22 +11,23 @@ import OrderSummary from './pages/summary/OrderSummary';
 import { OrderDetailsProvider } from './contexts/OrderDetails.jsx';
 function App() {
 	return (
-		<OrderDetailsProvider>
-			<Router>
-				<Navigation />
-				<Container className='App'>
-					<Row style={{ marginTop: '20px' }}>
-						<Switch>
+		<Router>
+			<Navigation />
+
+			<Container className='App'>
+				<Row style={{ marginTop: '20px' }}>
+					<Switch>
+						<OrderDetailsProvider>
 							<Route exact path='/' component={OrderEntry} />
 							<Route
 								path='/order-summary'
 								component={OrderSummary}
 							/>
-						</Switch>
-					</Row>
-				</Container>
-			</Router>
-		</OrderDetailsProvider>
+						</OrderDetailsProvider>
+					</Switch>
+				</Row>
+			</Container>
+		</Router>
 	);
 }
 
