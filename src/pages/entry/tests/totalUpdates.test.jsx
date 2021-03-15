@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import Options from '../Options';
 
 import { OrderDetailsProvider } from '../../../contexts/OrderDetails';
+import OrderEntry from '../OrderEntry';
 test('update pizza subtotal when pizza change', async () => {
 	render(<Options optionType='pizzas' />);
 
@@ -57,4 +58,53 @@ test('update toppings subtotal when toppings added', async () => {
 	userEvent.click(MushroomCheckbox);
 	expect(MushroomCheckbox).not.toBeChecked();
 	expect(toppingsSubTotal).toHaveTextContent('5.00');
+});
+
+describe('Total Pizzas/Topping', () => {
+	test('total starts at 0.00', () => {
+		render(<OrderEntry />);
+		const total = screen.getByRole('heading', { name: /Total: \$/i });
+		expect(total).toHaveTextContent('0.00');
+	});
+
+	test('total updates if pizza is added first', async () => {
+		render(<OrderEntry />);
+
+		const total = screen.getByRole('heading', { name: /Total: \$/i });
+
+		// update American pizza to 1 and check total
+		const americanInput = await screen.findByRole('spinbutton', {
+			name: 'American',
+		});
+		userEvent.clear(americanInput);
+		userEvent.type(americanInput, '1');
+		expect(total).toHaveTextContent('10.00');
+
+		const MushroomCheckbox = await screen.findByRole('checkbox', {
+			name: 'Mushrooms',
+		});
+		// check Mushroom topping and check total
+		userEvent.click(MushroomCheckbox);
+		expect(total).toHaveTextContent('12.50');
+	});
+
+	test('total updates if topping is added first', async () => {
+		render(<OrderEntry />);
+
+		const total = screen.getByRole('heading', { name: /Total: \$/i });
+
+		const MushroomCheckbox = await screen.findByRole('checkbox', {
+			name: 'Mushrooms',
+		});
+		// check Mushroom topping and check total
+		userEvent.click(MushroomCheckbox);
+		expect(total).toHaveTextContent('2.50');
+		// update American pizza to 1 and check total
+		const americanInput = await screen.findByRole('spinbutton', {
+			name: 'American',
+		});
+		userEvent.clear(americanInput);
+		userEvent.type(americanInput, '1');
+		expect(total).toHaveTextContent('12.50');
+	});
 });
