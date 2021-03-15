@@ -13,10 +13,9 @@ function formatCurrency(currency) {
 
 function calculateSubtotal(optionType, optionCounts) {
 	let optionCount = 0;
-	for (const count of optionCounts[optionType].entries()) {
+	for (const count of optionCounts[optionType].values()) {
 		optionCount += count;
 	}
-
 	return optionCount * pricePerItem[optionType];
 }
 
@@ -53,6 +52,7 @@ export function OrderDetailsProvider(props) {
 		const pizzasSubtotal = calculateSubtotal('pizzas', optionCounts);
 		const toppingsSubtotal = calculateSubtotal('toppings', optionCounts);
 		const total = pizzasSubtotal + toppingsSubtotal;
+
 		setTotals({
 			pizzas: formatCurrency(pizzasSubtotal),
 			toppings: formatCurrency(toppingsSubtotal),
@@ -63,7 +63,6 @@ export function OrderDetailsProvider(props) {
 	const value = useMemo(() => {
 		function updateItemCount(itemName, newItemCount, optionType) {
 			const newOptionCount = { ...optionCounts };
-
 			// update option count for this item with the new value
 			const optionCountsMap = optionCounts[optionType];
 			optionCountsMap.set(itemName, parseInt(newItemCount));

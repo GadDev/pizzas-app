@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 const PizzaOption = ({ name, image, updateItemCount }) => {
 	const handleChange = (e) => {
-		console.log(typeof parseFloat(e.target.value));
 		updateItemCount(name, parseFloat(e.target.value));
 	};
 
@@ -27,7 +26,7 @@ const PizzaOption = ({ name, image, updateItemCount }) => {
 					<Form.Control
 						type='number'
 						defaultValue={0}
-						onChange={(e) => handleChange(e)}
+						onChange={handleChange}
 					/>
 				</Col>
 			</Form.Group>

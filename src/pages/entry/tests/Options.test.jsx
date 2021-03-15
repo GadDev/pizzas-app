@@ -1,5 +1,4 @@
-import { render, screen, wait} from '@testing-library/react';
-
+import { render, screen } from '../../../test-utils/testing-library-utils';
 import Options from '../Options';
 
 test('displays image for each pizzas option from server', async () => {
