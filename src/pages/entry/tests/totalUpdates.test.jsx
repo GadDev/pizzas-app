@@ -107,4 +107,31 @@ describe('Total Pizzas/Topping', () => {
 		userEvent.type(americanInput, '1');
 		expect(total).toHaveTextContent('12.50');
 	});
+	test('total updates properly if item is removed', async () => {
+		render(<OrderEntry />);
+		const total = screen.getByRole('heading', { name: /Total: \$/i });
+
+		const MushroomCheckbox = await screen.findByRole('checkbox', {
+			name: 'Mushrooms',
+		});
+		// check Mushroom topping and check total
+		userEvent.click(MushroomCheckbox);
+		expect(total).toHaveTextContent('2.50');
+		// update American pizza to 1 and check total
+		const americanInput = await screen.findByRole('spinbutton', {
+			name: 'American',
+		});
+		userEvent.clear(americanInput);
+		userEvent.type(americanInput, '2');
+		expect(total).toHaveTextContent('22.50');
+
+		userEvent.clear(americanInput);
+		userEvent.type(americanInput, '1');
+
+		expect(total).toHaveTextContent('12.50');
+
+		userEvent.click(MushroomCheckbox);
+
+		expect(total).toHaveTextContent('10.00');
+	});
 });
