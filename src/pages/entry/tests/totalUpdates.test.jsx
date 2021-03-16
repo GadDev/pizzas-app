@@ -61,17 +61,12 @@ test('update toppings subtotal when toppings added', async () => {
 });
 
 describe('Total Pizzas/Topping', () => {
-	test('total starts at 0.00', () => {
+	test('total updates if pizza is added first', async () => {
+		
 		render(<OrderEntry />);
+
 		const total = screen.getByRole('heading', { name: /Total: \$/i });
 		expect(total).toHaveTextContent('0.00');
-	});
-
-	test('total updates if pizza is added first', async () => {
-		render(<OrderEntry />);
-
-		const total = screen.getByRole('heading', { name: /Total: \$/i });
-
 		// update American pizza to 1 and check total
 		const americanInput = await screen.findByRole('spinbutton', {
 			name: 'American',

@@ -1,15 +1,7 @@
 import { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import { pricePerItem } from '../constants';
-
+import { formatCurrency } from '../utils';
 //format number as currency
-
-function formatCurrency(currency) {
-	return new Intl.NumberFormat('en-US', {
-		style: 'currency',
-		currency: 'USD',
-		minimumFractionDigits: 2,
-	}).format(currency);
-}
 
 function calculateSubtotal(optionType, optionCounts) {
 	let optionCount = 0;
