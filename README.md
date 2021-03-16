@@ -1,3 +1,7 @@
+# Server to use
+
+Clone or fork the repository found at [https://github.com/GadDev/pizza-on-demand]
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
