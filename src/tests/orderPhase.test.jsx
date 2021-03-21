@@ -61,22 +61,27 @@ test('order phases for happy path', async () => {
 
 	// confirm order number on confirmation page
 	//async because there is a POST request
-	const thankyouHeader = await screen.findByRole('heading', { name: /thank you/i})
-	expect(thankyouHeader).toBeInTheDocument()
+	const thankyouHeader = await screen.findByRole('heading', {
+		name: /thank you/i,
+	});
+	expect(thankyouHeader).toBeInTheDocument();
 
-	const orderNumber = await screen.findByText(/order number/i)
-	expect(orderNumber).toBeInTheDocument()
+	const orderNumber = await screen.findByText(/order number/i);
+	expect(orderNumber).toBeInTheDocument();
 
 	// click 'new order' button confirmation page
-	const newOrderBtn = screen.getByRole('button', { name: /new order/i})
-	expect(newOrderBtn).toBeInTheDocument()
-	userEvent.click(newOrderBtn)
+	const newOrderBtn = screen.getByRole('button', { name: /new order/i });
+	expect(newOrderBtn).toBeInTheDocument();
+	userEvent.click(newOrderBtn);
 
 	// check that pizzas and toppings subtotals have been reset
 	const pizzasTotal = screen.getByText('Pizzas total: $0.00');
-	expect(pizzasTotal).toBeInTheDocument()
-	const toppingTotal = screen.getByText('Toppings total: $0.00')
-	expect(toppingTotal).toBeInTheDocument()
+	expect(pizzasTotal).toBeInTheDocument();
+	const toppingTotal = screen.getByText('Toppings total: $0.00');
+	expect(toppingTotal).toBeInTheDocument();
 
 	// do we need to await anything to avoid test errors?
+	// wait for items to appear back to the order screen
+	await screen.findByRole('spinbutton', { name: 'American' });
+	await screen.findByRole('checkbox', { name: 'Mushrooms' });
 });
