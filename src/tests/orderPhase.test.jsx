@@ -9,8 +9,8 @@ test('order phases for happy path', async () => {
 	const americanInput = await screen.findByRole('spinbutton', {
 		name: 'American',
 	});
-	userEvent.clear(americanInput)
-	userEvent.type(americanInput, '1')
+	userEvent.clear(americanInput);
+	userEvent.type(americanInput, '1');
 
 	const fiorentinaInput = await screen.findByRole('spinbutton', {
 		name: 'Fiorentina',
@@ -18,7 +18,13 @@ test('order phases for happy path', async () => {
 	userEvent.clear(fiorentinaInput);
 	userEvent.type(fiorentinaInput, '2');
 
-	
+	const MushroomCheckbox = await screen.findByRole('checkbox', {
+		name: 'Mushrooms',
+	});
+	expect(MushroomCheckbox).not.toBeChecked();
+
+	userEvent.click(MushroomCheckbox);
+
 	// find and click order button
 
 	// check summary information based on order
