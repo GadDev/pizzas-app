@@ -54,11 +54,15 @@ test('order phases for happy path', async () => {
 	expect(screen.getByText('Mushrooms')).toBeInTheDocument();
 
 	// accept terms and conditions and click btn to confirm order
-	const TermsAndConditionsButton = screen.getByRole('button', {
+	const termsAndConditionsButton = screen.getByRole('button', {
 		name: /confirm order/i,
 	});
-	userEvent.click(TermsAndConditionsButton);
+	userEvent.click(termsAndConditionsButton);
+
 	// confirm order number on confirmation page
+	//async because there is a POST request
+	const thankyouHeader = await screen.findByRole('heading', { name: /thank you/i})
+	expect(thankyouHeader).toBeInTheDocument()
 
 	// click 'new order' button confirmation page
 
