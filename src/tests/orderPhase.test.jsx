@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from '../App'
+import App from '../App';
 
 test('order phases for happy path', () => {
 	// render app
-
+	render(<App />);
 	// add pizza and toppings
 
 	// find and click order button
@@ -20,4 +20,4 @@ test('order phases for happy path', () => {
 	// check that pizzas and toppings subtotals have been reset
 
 	// do we need to await anything to avoid test errors?
-})
+});
