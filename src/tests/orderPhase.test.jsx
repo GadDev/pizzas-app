@@ -12,7 +12,7 @@ test('order phases for happy path', async () => {
 	userEvent.clear(americanInput);
 	userEvent.type(americanInput, '1');
 
-	const fiorentinaInput = await screen.findByRole('spinbutton', {
+	const fiorentinaInput = screen.findByRole('spinbutton', {
 		name: 'Fiorentina',
 	});
 	userEvent.clear(fiorentinaInput);
@@ -30,7 +30,12 @@ test('order phases for happy path', async () => {
 		name: /order pizza/i,
 	});
 	userEvent.click(orderSummaryBtn);
+
 	// check summary information based on order
+	const summaryHeading = screen.getByRole('heading', {
+		name: 'Order Summary',
+	});
+	expect(summaryHeading).toBeInTheDocument();
 
 	// accept terms and conditions and click btn to confirm order
 
