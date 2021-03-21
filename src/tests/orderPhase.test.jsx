@@ -68,6 +68,9 @@ test('order phases for happy path', async () => {
 	expect(orderNumber).toBeInTheDocument()
 
 	// click 'new order' button confirmation page
+	const newOrderBtn = screen.getByRole('button', { name: /new order/i})
+	expect(newOrderBtn).toBeInTheDocument()
+	userEvent.click(newOrderBtn)
 
 	// check that pizzas and toppings subtotals have been reset
 
