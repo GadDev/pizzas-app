@@ -41,6 +41,8 @@ test('order phases for happy path', async () => {
 	const pizzasHeading = screen.getByRole('heading', { name: 'Pizzas: $30.00'});
 	expect(pizzasHeading).toBeInTheDocument()
 
+	const toppingHeading = screen.getByRole('heading', { name: 'Toppings: $2.50'})
+	expect(toppingHeading).toBeInTheDocument()
 	// accept terms and conditions and click btn to confirm order
 
 	// confirm order number on confirmation page
