@@ -64,6 +64,9 @@ test('order phases for happy path', async () => {
 	const thankyouHeader = await screen.findByRole('heading', { name: /thank you/i})
 	expect(thankyouHeader).toBeInTheDocument()
 
+	const orderNumber = await screen.findByText(/order number/i)
+	expect(orderNumber).toBeInTheDocument()
+
 	// click 'new order' button confirmation page
 
 	// check that pizzas and toppings subtotals have been reset
