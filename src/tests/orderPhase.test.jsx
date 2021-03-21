@@ -38,16 +38,20 @@ test('order phases for happy path', async () => {
 	});
 	expect(summaryHeading).toBeInTheDocument();
 
+	const pizzasHeading = screen.getByRole('heading', {
+		name: 'Pizzas: $30.00',
+	});
+	expect(pizzasHeading).toBeInTheDocument();
 
-	const pizzasHeading = screen.getByRole('heading', { name: 'Pizzas: $30.00'});
-	expect(pizzasHeading).toBeInTheDocument()
+	const toppingHeading = screen.getByRole('heading', {
+		name: 'Toppings: $2.50',
+	});
+	expect(toppingHeading).toBeInTheDocument();
 
-	const toppingHeading = screen.getByRole('heading', { name: 'Toppings: $2.50'})
-	expect(toppingHeading).toBeInTheDocument()
-
-	//check summary option items 
-	expect(screen.getByText('1 American').toBeInTheDocument())
+	//check summary option items
+	expect(screen.getByText('1 American').toBeInTheDocument());
 	expect(screen.getByText('2 Fiorentina').toBeInTheDocument());
+	expect(screen.getByText('Mushrooms')).toBeInTheDocument()
 
 	// accept terms and conditions and click btn to confirm order
 
