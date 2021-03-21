@@ -31,6 +31,7 @@ test('order phases for happy path', async () => {
 	});
 	userEvent.click(orderSummaryBtn);
 
+	// bring you to the summary page
 	// check summary information based on order
 	const summaryHeading = screen.getByRole('heading', {
 		name: 'Order Summary',
@@ -43,6 +44,11 @@ test('order phases for happy path', async () => {
 
 	const toppingHeading = screen.getByRole('heading', { name: 'Toppings: $2.50'})
 	expect(toppingHeading).toBeInTheDocument()
+
+	//check summary option items 
+	expect(screen.getByText('1 American').toBeInTheDocument())
+
+
 	// accept terms and conditions and click btn to confirm order
 
 	// confirm order number on confirmation page
