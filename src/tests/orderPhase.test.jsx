@@ -26,7 +26,10 @@ test('order phases for happy path', async () => {
 	userEvent.click(MushroomCheckbox);
 
 	// find and click order button
-
+	const orderSummaryBtn = screen.getByRole('button', {
+		name: /order pizza/i,
+	});
+	userEvent.click(orderSummaryBtn);
 	// check summary information based on order
 
 	// accept terms and conditions and click btn to confirm order
