@@ -51,10 +51,13 @@ test('order phases for happy path', async () => {
 	//check summary option items
 	expect(screen.getByText('1 American').toBeInTheDocument());
 	expect(screen.getByText('2 Fiorentina').toBeInTheDocument());
-	expect(screen.getByText('Mushrooms')).toBeInTheDocument()
+	expect(screen.getByText('Mushrooms')).toBeInTheDocument();
 
 	// accept terms and conditions and click btn to confirm order
-
+	const TermsAndConditionsButton = screen.getByRole('button', {
+		name: /confirm order/i,
+	});
+	userEvent.click(TermsAndConditionsButton);
 	// confirm order number on confirmation page
 
 	// click 'new order' button confirmation page
