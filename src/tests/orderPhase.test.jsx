@@ -73,6 +73,8 @@ test('order phases for happy path', async () => {
 	userEvent.click(newOrderBtn)
 
 	// check that pizzas and toppings subtotals have been reset
+	const pizzasTotal = screen.getByText('Pizzas total: $0.00');
+	expect(pizzasTotal).toBeInTheDocument()
 
 	// do we need to await anything to avoid test errors?
 });
