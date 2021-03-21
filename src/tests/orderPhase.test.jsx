@@ -6,7 +6,11 @@ test('order phases for happy path', () => {
 	// render app
 	render(<App />);
 	// add pizza and toppings
-
+	const americanInput = await screen.findByRole('spinbutton', {
+		name: 'American',
+	});
+	userEvent.clear(americanInput)
+	userEvent.type(americanInput, '1')
 	// find and click order button
 
 	// check summary information based on order
