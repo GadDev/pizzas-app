@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 
-test('order phases for happy path', () => {
+test('order phases for happy path', async () => {
 	// render app
 	render(<App />);
 	// add pizza and toppings
@@ -11,6 +11,14 @@ test('order phases for happy path', () => {
 	});
 	userEvent.clear(americanInput)
 	userEvent.type(americanInput, '1')
+
+	const fiorentinaInput = await screen.findByRole('spinbutton', {
+		name: 'Fiorentina',
+	});
+	userEvent.clear(fiorentinaInput);
+	userEvent.type(fiorentinaInput, '2');
+
+	
 	// find and click order button
 
 	// check summary information based on order
