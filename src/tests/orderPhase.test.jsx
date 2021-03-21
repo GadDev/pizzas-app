@@ -75,6 +75,8 @@ test('order phases for happy path', async () => {
 	// check that pizzas and toppings subtotals have been reset
 	const pizzasTotal = screen.getByText('Pizzas total: $0.00');
 	expect(pizzasTotal).toBeInTheDocument()
+	const toppingTotal = screen.getByText('Toppings total: $0.00')
+	expect(toppingTotal).toBeInTheDocument()
 
 	// do we need to await anything to avoid test errors?
 });
