@@ -47,7 +47,7 @@ test('order phases for happy path', async () => {
 
 	//check summary option items 
 	expect(screen.getByText('1 American').toBeInTheDocument())
-
+	expect(screen.getByText('2 Fiorentina').toBeInTheDocument());
 
 	// accept terms and conditions and click btn to confirm order
 
