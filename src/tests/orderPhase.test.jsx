@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from '../App';
+import userEvent from '@testing-library/user-event';
 
-test.only('order phases for happy path', async () => {
+test('order phases for happy path', async () => {
 	// render app
 	render(<App />);
 	// add pizza and toppings
@@ -13,7 +13,7 @@ test.only('order phases for happy path', async () => {
 	userEvent.clear(americanInput);
 	userEvent.type(americanInput, '1');
 
-	const fiorentinaInput = screen.findByRole('spinbutton', {
+	const fiorentinaInput = await screen.findByRole('spinbutton', {
 		name: 'Fiorentina',
 	});
 	userEvent.clear(fiorentinaInput);
@@ -28,7 +28,7 @@ test.only('order phases for happy path', async () => {
 
 	// find and click order button
 	const orderSummaryBtn = screen.getByRole('button', {
-		name: /order pizza/i,
+		name: /order your pizza/i,
 	});
 	userEvent.click(orderSummaryBtn);
 
@@ -50,18 +50,28 @@ test.only('order phases for happy path', async () => {
 	expect(toppingHeading).toBeInTheDocument();
 
 	//check summary option items
-	expect(screen.getByText('1 American').toBeInTheDocument());
-	expect(screen.getByText('2 Fiorentina').toBeInTheDocument());
-	expect(screen.getByText('Mushrooms')).toBeInTheDocument();
+	expect(screen.getByText('1 American')).toBeInTheDocument();
+	expect(screen.getByText('2 Fiorentina')).toBeInTheDocument();
+	expect(screen.getByText('1 Mushrooms')).toBeInTheDocument();
 
 	// accept terms and conditions and click btn to confirm order
-	const termsAndConditionsButton = screen.getByRole('button', {
+	const checkbox = screen.getByRole('checkbox', {
+		name: /terms and conditions/i,
+	});
+	const confirmButton = screen.getByRole('button', {
 		name: /confirm order/i,
 	});
-	userEvent.click(termsAndConditionsButton);
+	userEvent.click(checkbox);
+	expect(confirmButton).toBeEnabled();
+	userEvent.click(confirmButton);
+
+	// Expect "loading" to show
+	const loading = screen.getByText(/loading/i);
+	expect(loading).toBeInTheDocument();
 
 	// confirm order number on confirmation page
 	//async because there is a POST request
+
 	const thankyouHeader = await screen.findByRole('heading', {
 		name: /thank you/i,
 	});

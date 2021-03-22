@@ -9,7 +9,7 @@ export default function OrderEntry({ setPhase }) {
 			<Options optionType='pizzas' />
 			<Options optionType='toppings' />
 			<h2>Total: {orderDetails.totals.totals}</h2>
-			<Button onClick={() => setPhase('review')}>Order you pizza</Button>
+			<Button onClick={() => setPhase('review')}>Order your pizza</Button>
 		</div>
 	);
 }
