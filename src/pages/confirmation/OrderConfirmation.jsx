@@ -4,7 +4,7 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { useOrderDetails } from '../../contexts/OrderDetails';
 
-const OrderConfirmation = ({ setOrderPhase }) => {
+const OrderConfirmation = ({ setPhase }) => {
 	const [, , resetOrder] = useOrderDetails();
 	const [orderNumber, setOrderNumber] = useState(null);
 
@@ -22,7 +22,7 @@ const OrderConfirmation = ({ setOrderPhase }) => {
 	const handleClick = () => {
 		resetOrder();
 
-		setOrderPhase('inProgress');
+		setPhase('inProgress');
 	};
 
 	if (!orderNumber) {
@@ -37,3 +37,5 @@ const OrderConfirmation = ({ setOrderPhase }) => {
 		</div>
 	);
 };
+
+export default OrderConfirmation;
