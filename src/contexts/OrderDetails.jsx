@@ -54,11 +54,14 @@ export function OrderDetailsProvider(props) {
 	}, [optionCounts]);
 
 	const value = useMemo(() => {
+
 		function updateItemCount(itemName, newItemCount, optionType) {
+
 			const newOptionCount = { ...optionCounts };
 			// update option count for this item with the new value
 			const optionCountsMap = optionCounts[optionType];
 			optionCountsMap.set(itemName, parseInt(newItemCount));
+			
 			setOptionCounts(newOptionCount);
 		}
 
@@ -66,5 +69,6 @@ export function OrderDetailsProvider(props) {
 		//setter: ===> updateItemCount update options counts
 		return [{ ...optionCounts, totals }, updateItemCount];
 	}, [optionCounts, totals]);
+
 	return <OrderDetails.Provider value={value} {...props} />;
 }

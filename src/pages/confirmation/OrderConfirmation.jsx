@@ -18,4 +18,22 @@ const OrderConfirmation = ({ setOrderPhase }) => {
 				console.log(error);
 			});
 	});
+
+	const handleClick = () => {
+		resetOrder();
+
+		setOrderPhase('inProgress');
+	};
+
+	if (!orderNumber) {
+		return <div>Loading...</div>;
+	}
+
+	return (
+		<div style={{ textAlign: 'center' }}>
+			<h1>Thank you</h1>
+			<p>You order number is {orderNumber}</p>
+			<Button onClick={handleClick}>Create new order</Button>
+		</div>
+	);
 };
