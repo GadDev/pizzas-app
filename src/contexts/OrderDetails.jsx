@@ -34,6 +34,7 @@ export function OrderDetailsProvider(props) {
 	});
 
 	const zeroCurrently = formatCurrency(0);
+
 	const [totals, setTotals] = useState({
 		pizzas: zeroCurrently,
 		toppings: zeroCurrently,
@@ -54,9 +55,7 @@ export function OrderDetailsProvider(props) {
 	}, [optionCounts]);
 
 	const value = useMemo(() => {
-
 		function updateItemCount(itemName, newItemCount, optionType) {
-
 			const newOptionCount = { ...optionCounts };
 			// update option count for this item with the new value
 			const optionCountsMap = optionCounts[optionType];
@@ -67,9 +66,9 @@ export function OrderDetailsProvider(props) {
 
 		function resetOrder() {
 			setOptionCounts({
-				scoops: new Map(),
-				toppings: new Map()
-			})
+				pizzas: new Map(),
+				toppings: new Map(),
+			});
 		}
 
 		//getter:  {...optionCounts, totals } // object containing options counts for pizzas and toppings, subtotals, totals
