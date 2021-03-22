@@ -1,7 +1,8 @@
 import SummaryForm from './SummaryForm'
 import { useOrderDetails } from '../../contexts/OrderDetails'
 
-const OrderSummary = () => {
+const OrderSummary = ({ setPhase }) => {
+	const [orderDetails] = useOrderDetails()
 	return <div>Order Summary</div>;
 };
 
