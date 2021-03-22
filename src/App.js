@@ -12,6 +12,9 @@ import { OrderDetailsProvider } from './contexts/OrderDetails.jsx';
 function App() {
 	// order "inProgress", 'review', or 'completed'
 	const [phase, setPhase] = useState(null)
+
+	//set default view
+	let Component = OrderEntry
 	return (
 		<Router>
 			<Navigation />
