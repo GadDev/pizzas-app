@@ -31,7 +31,9 @@ function App() {
 	return (
 		<Container className='App'>
 			<Row style={{ marginTop: '20px' }}>
-				<OrderDetailsProvider></OrderDetailsProvider>
+				<OrderDetailsProvider>
+					{<Component setPhase={setPhase} />}
+				</OrderDetailsProvider>
 			</Row>
 		</Container>
 	);
