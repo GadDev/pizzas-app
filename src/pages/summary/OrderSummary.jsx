@@ -14,7 +14,13 @@ const OrderSummary = ({ setPhase }) => {
 		);
 	});
 
-	return <div>Order Summary</div>;
+	return (
+		<div>
+			<h1>Order Summary</h1>
+			<h2>Pizzas: {orderDetails.totals.pizzas}</h2>
+			<ul>{listPizzas}</ul>
+		</div>
+	);
 };
 
 export default OrderSummary;
