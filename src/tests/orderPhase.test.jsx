@@ -77,6 +77,10 @@ test('order phases for happy path', async () => {
 	});
 	expect(thankyouHeader).toBeInTheDocument();
 
+	// expect that loading has disappeared
+	const notLoading = screen.queryByText('loading');
+	expect(notLoading).not.toBeInTheDocument();
+
 	const orderNumber = await screen.findByText(/order number/i);
 	expect(orderNumber).toBeInTheDocument();
 

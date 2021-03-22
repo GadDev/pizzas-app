@@ -16,6 +16,8 @@ const OrderConfirmation = ({ setPhase }) => {
 			})
 			.catch((error) => setError(true));
 	}, []);
+
+	
 	if (error) {
 		return <AlertBanner />;
 	}
