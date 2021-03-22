@@ -10,6 +10,8 @@ import OrderSummary from './pages/summary/OrderSummary';
 
 import { OrderDetailsProvider } from './contexts/OrderDetails.jsx';
 function App() {
+	// order "inProgress", 'review', or 'completed'
+	const [phase, setPhase] = useState(null)
 	return (
 		<Router>
 			<Navigation />
