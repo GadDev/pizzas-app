@@ -1,13 +1,15 @@
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 import Options from './Options';
 import { useOrderDetails } from '../../contexts/OrderDetails';
-export default function OrderEntry() {
+export default function OrderEntry({ setPhase }) {
 	const [orderDetails] = useOrderDetails();
+
 	return (
 		<div>
 			<Options optionType='pizzas' />
 			<Options optionType='toppings' />
 			<h2>Total: {orderDetails.totals.totals}</h2>
+			<Button onClick={() => setPhase('review')}>Order you pizza</Button>
 		</div>
 	);
 }
