@@ -17,7 +17,7 @@ const OrderConfirmation = ({ setPhase }) => {
 			.catch((error) => {
 				console.log(error);
 			});
-	});
+	}, []);
 
 	const handleClick = () => {
 		resetOrder();

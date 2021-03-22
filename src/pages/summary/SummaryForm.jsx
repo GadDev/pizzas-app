@@ -8,10 +8,10 @@ const SummaryForm = ({ setPhase }) => {
 	const [checked, setChecked] = useState(false);
 
 	const handleSubmit = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 
-		setPhase('completed')
-	}
+		setPhase('completed');
+	};
 
 	const popover = (
 		<Popover id='popover-basic'>
@@ -32,7 +32,7 @@ const SummaryForm = ({ setPhase }) => {
 	);
 
 	return (
-		<Form action='/order'>
+		<Form action='/order' onSubmit={handleSubmit}>
 			<Form.Group controlId='terms-and-conditions'>
 				<Form.Check
 					type='checkbox'
