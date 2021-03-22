@@ -7,6 +7,12 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 const SummaryForm = ({ setPhase }) => {
 	const [checked, setChecked] = useState(false);
 
+	const handleSubmit = (e) => {
+		e.preventDefault()
+
+		setPhase('completed')
+	}
+
 	const popover = (
 		<Popover id='popover-basic'>
 			<Popover.Content>No pizza will be delivered</Popover.Content>
