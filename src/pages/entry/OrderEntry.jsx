@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/Button'
 import Options from './Options';
 import { useOrderDetails } from '../../contexts/OrderDetails';
 export default function OrderEntry() {
