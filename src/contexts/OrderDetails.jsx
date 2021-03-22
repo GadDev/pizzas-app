@@ -12,6 +12,7 @@ function calculateSubtotal(optionType, optionCounts) {
 }
 
 const OrderDetails = createContext();
+
 //custom hook to check whether we're inside the provider
 export function useOrderDetails() {
 	const context = useContext(OrderDetails);
