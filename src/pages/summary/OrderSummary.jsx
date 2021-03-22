@@ -29,7 +29,7 @@ const OrderSummary = ({ setPhase }) => {
 			<ul>{listPizzas}</ul>
 			<h2>Toppings: {orderDetails.totals.toppings}</h2>
 			<ul>{listToppings}</ul>
-			<SummaryForm />
+			<SummaryForm setPhase={setPhase} />
 		</div>
 	);
 };
