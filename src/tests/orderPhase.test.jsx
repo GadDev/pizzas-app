@@ -135,7 +135,9 @@ test('Toppings header not on Summary view if no toppings ordered', async () => {
 	});
 	expect(pizzasHeading).toBeInTheDocument();
 
-	
-
-
+	//topping heading is not on Summary view
+	const toppingHeading = screen.getByRole('heading', {
+		name: /toppings/i,
+	});
+	expect(toppingHeading).not.toBeInTheDocument();
 });
