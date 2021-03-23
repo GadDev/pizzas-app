@@ -104,4 +104,11 @@ test('order phases for happy path', async () => {
 test('Toppings header not on Summary view if no toppings ordered', async () => {
 	//render App
 	render(<App/>)
+
+	// add Pizza and topping
+	const pizzaAmerican = await screen.findByRole('spinbutton', { name: "American"})
+	userEvent.clear()
+	userEvent.type(pizzaAmerican, '1');
+
+	
 });
