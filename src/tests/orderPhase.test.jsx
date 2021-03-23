@@ -103,11 +103,13 @@ test('order phases for happy path', async () => {
 
 test('Toppings header not on Summary view if no toppings ordered', async () => {
 	//render App
-	render(<App/>)
+	render(<App />);
 
 	// add Pizza and topping
-	const pizzaAmerican = await screen.findByRole('spinbutton', { name: "American"})
-	userEvent.clear()
+	const pizzaAmerican = await screen.findByRole('spinbutton', {
+		name: 'American',
+	});
+	userEvent.clear();
 	userEvent.type(pizzaAmerican, '1');
 
 	const pizzaFiorentina = await screen.findByRole('spinbutton', {
@@ -115,4 +117,10 @@ test('Toppings header not on Summary view if no toppings ordered', async () => {
 	});
 	userEvent.clear();
 	userEvent.type(pizzaFiorentina, '1');
+
+	// find and click order button
+	const orderSummaryBtn = screen.getByRole('button', {
+		name: /order your pizza/i,
+	});
+	userEvent.click(orderSummaryBtn);
 });
