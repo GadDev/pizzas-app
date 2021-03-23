@@ -31,4 +31,11 @@ test('handles error for routes', async () => {
 
 test('disable order button if no selected items', () => {
 	render(<OrderEntry setPhase={jest.fn()} />);
+
+	// find and order is disabled
+	const orderSummaryBtn = screen.getByRole('button', {
+		name: /order your pizza/i,
+	});
+
+	expect(orderSummaryBtn).toBeDisabled()
 })
