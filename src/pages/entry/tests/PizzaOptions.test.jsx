@@ -20,4 +20,9 @@ test('indicate if pizza count is not integer or out of range', async () => {
 	userEvent.clear(optionInput);
 	userEvent.type(optionInput, '11');
 	expect(optionInput).toHaveClass('is-invalid');
+
+	//expect input to be valid with correct number
+	userEvent.clear(optionInput);
+	userEvent.type(optionInput, '3');
+	expect(optionInput).not.toHaveClass('is-invalid');
 });
