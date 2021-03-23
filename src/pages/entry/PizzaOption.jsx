@@ -7,6 +7,13 @@ const PizzaOption = ({ name, image, updateItemCount }) => {
 	const handleChange = (e) => {
 		const currentValue = e.target.value;
 		updateItemCount(name, currentValue);
+
+		const currentFloatValue = parseFloat(currentValue);
+		setValid(
+			0 >= currentFloatValue &&
+				currentFloatValue <= 10 &&
+				Math.floor(currentFloatValue) === currentFloatValue
+		);
 	};
 
 	return (
