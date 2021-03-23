@@ -109,13 +109,13 @@ test('Toppings header not on Summary view if no toppings ordered', async () => {
 	const pizzaAmerican = await screen.findByRole('spinbutton', {
 		name: 'American',
 	});
-	userEvent.clear();
+	userEvent.clear(pizzaAmerican);
 	userEvent.type(pizzaAmerican, '1');
 
 	const pizzaFiorentina = await screen.findByRole('spinbutton', {
 		name: 'Fiorentina',
 	});
-	userEvent.clear();
+	userEvent.clear(pizzaFiorentina);
 	userEvent.type(pizzaFiorentina, '1');
 
 	// find and click order button
@@ -123,4 +123,19 @@ test('Toppings header not on Summary view if no toppings ordered', async () => {
 		name: /order your pizza/i,
 	});
 	userEvent.click(orderSummaryBtn);
+
+	//find pizza heading on Summary
+	const summaryHeading = screen.getByRole('heading', {
+		name: 'Order Summary',
+	});
+	expect(summaryHeading).toBeInTheDocument();
+
+	const pizzasHeading = screen.getByRole('heading', {
+		name: 'Pizzas: $20.00',
+	});
+	expect(pizzasHeading).toBeInTheDocument();
+
+	
+
+
 });
