@@ -110,5 +110,9 @@ test('Toppings header not on Summary view if no toppings ordered', async () => {
 	userEvent.clear()
 	userEvent.type(pizzaAmerican, '1');
 
-	
+	const pizzaFiorentina = await screen.findByRole('spinbutton', {
+		name: 'Fiorentina',
+	});
+	userEvent.clear();
+	userEvent.type(pizzaFiorentina, '1');
 });
