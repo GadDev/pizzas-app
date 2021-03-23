@@ -100,3 +100,5 @@ test('order phases for happy path', async () => {
 	await screen.findByRole('spinbutton', { name: 'American' });
 	await screen.findByRole('checkbox', { name: 'Mushrooms' });
 });
+
+test('Toppings header not on Summary view if no toppings ordered', async () => {});
