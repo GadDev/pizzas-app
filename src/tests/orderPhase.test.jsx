@@ -101,4 +101,7 @@ test('order phases for happy path', async () => {
 	await screen.findByRole('checkbox', { name: 'Mushrooms' });
 });
 
-test('Toppings header not on Summary view if no toppings ordered', async () => {});
+test('Toppings header not on Summary view if no toppings ordered', async () => {
+	//render App
+	render(<App/>)
+});
