@@ -28,3 +28,7 @@ test('handles error for routes', async () => {
 		expect(alerts).toHaveLength(2);
 	});
 });
+
+test('disable order button if no selected items', () => {
+	
+})
