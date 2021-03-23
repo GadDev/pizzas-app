@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 const PizzaOption = ({ name, image, updateItemCount }) => {
+	const [valid, setValid] = useState(true);
 	const handleChange = (e) => {
-		updateItemCount(name, parseFloat(e.target.value));
+		const currentValue = e.target.value;
+		updateItemCount(name, currentValue);
 	};
 
 	return (
