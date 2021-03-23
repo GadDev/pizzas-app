@@ -30,5 +30,5 @@ test('handles error for routes', async () => {
 });
 
 test('disable order button if no selected items', () => {
-	
+	render(<OrderEntry setPhase={jest.fn()} />);
 })
