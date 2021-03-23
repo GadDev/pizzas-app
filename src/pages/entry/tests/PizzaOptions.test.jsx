@@ -6,6 +6,7 @@ test('indicate if pizza count is not integer or out of range', async () => {
 	render(<PizzaOption name='' image='' updateItemCount={jest.fn()} />);
 
 	//epxect input to be invalid with negative integer
-	const pizzaAmerican = screen.getByRole('spinButton')
-	
+	const optionInput = screen.getByRole('spinButton')
+	userEvent.clear(optionInput);
+	userEvent.type(optionInput, '-1');
 });
