@@ -36,7 +36,6 @@ test('disable order button if no selected items', () => {
 	const orderSummaryBtn = screen.getByRole('button', {
 		name: /order your pizza/i,
 	});
-
 	expect(orderSummaryBtn).toBeDisabled()
 
 	// add Pizza and expect order btn is enabled
@@ -46,5 +45,10 @@ test('disable order button if no selected items', () => {
 	userEvent.clear(pizzaAmerican);
 	userEvent.type(pizzaAmerican, '1');
 	expect(orderSummaryBtn).toBeEnabled()
+
+	// expect order btn disabled after items removed
+	userEvent.clear(pizzaAmerican);
+	userEvent.type(pizzaAmerican, '0');
+	expect(orderSummaryBtn).toBeDisabled()
 
 })
