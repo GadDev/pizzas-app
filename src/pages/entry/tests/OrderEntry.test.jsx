@@ -21,7 +21,7 @@ test('handles error for routes', async () => {
 		})
 	);
 
-	render(<OrderEntry />);
+	render(<OrderEntry setPhase={jest.fn()} />);
 
 	await waitFor(async () => {
 		const alerts = await screen.findAllByRole('alert');
