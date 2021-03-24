@@ -36,5 +36,6 @@ test('no update total if pizzas input is invalid', () => {
 
 	//expect btn to be enabled after adding pizza
 	const americanPizza = await screen.findByRole('spinbutton', { name: 'American'});
-	userEvent.clear(americanPizza)
+	userEvent.clear(americanPizza);
+	userEvent.type(americanPizza, '-1')
 });
