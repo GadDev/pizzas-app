@@ -11,9 +11,9 @@ const PizzaOption = ({ name, image, updateItemCount }) => {
 			0 <= currentFloatValue &&
 			currentFloatValue <= 10 &&
 			Math.floor(currentFloatValue) === currentFloatValue;
-		
-		setValid(isValid);
 
+		setValid(isValid);
+		//update if value valid
 		if (isValid) {
 			updateItemCount(name, currentValue);
 		}
