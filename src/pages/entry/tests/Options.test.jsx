@@ -40,5 +40,7 @@ test('no update total if pizzas input is invalid', () => {
 	userEvent.type(americanPizza, '-1')
 
 	// pizzas subtotal not updated
-	const pizzasSubTotal = screen.getByText('Pizzas total: $0.00')
+	const pizzasSubTotal = screen.getByText('Pizzas total: $0.00');
+	expect(pizzasSubTotal).not.toBeInTheDocument()
+
 });
