@@ -32,4 +32,7 @@ test('display image for each toppings option from server', async () => {
 
 test('no update total if pizzas input is invalid', () => {
 	render(<Options optionType='pizzas' />);
+
+	//expect btn to be enabled after adding pizza
+	const americanPizza = await screen.findByRole('spinbutton', { name: 'American'})
 });
