@@ -31,16 +31,17 @@ test('display image for each toppings option from server', async () => {
 	]);
 });
 
-test('no update total if pizzas input is invalid', () => {
+test('no update total if pizzas input is invalid', async () => {
 	render(<Options optionType='pizzas' />);
 
 	//expect btn to be enabled after adding pizza
-	const americanPizza = await screen.findByRole('spinbutton', { name: 'American'});
+	const americanPizza = await screen.findByRole('spinbutton', {
+		name: 'American',
+	});
 	userEvent.clear(americanPizza);
-	userEvent.type(americanPizza, '-1')
+	userEvent.type(americanPizza, '-1');
 
 	// pizzas subtotal not updated
 	const pizzasSubTotal = screen.getByText('Pizzas total: $0.00');
-	expect(pizzasSubTotal).not.toBeInTheDocument()
-
+	expect(pizzasSubTotal).toBeInTheDocument();
 });
