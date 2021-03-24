@@ -13,8 +13,9 @@ test('error response server for submit order POST error request', async () => {
 	);
 
 	render(<OrderConfirmation setPhase={() => jest.fn()} />);
-	screen.debug();
 
-	const alert = await screen.findByRole('alert')
-	expect(alert).toHaveTextContent("An unexpected error occured. Please try again later.")
+	const alert = await screen.findByRole('alert');
+	expect(alert).toHaveTextContent(
+		'An unexpected error occured. Please try again later.'
+	);
 });
