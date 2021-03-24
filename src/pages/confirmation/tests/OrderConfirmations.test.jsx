@@ -16,4 +16,5 @@ test('error response server for submit order POST error request', async () => {
 	screen.debug();
 
 	const alert = await screen.findByRole('alert')
+	expect(alert).toHaveTextContent("An unexpected error occured. Please try again later.")
 });
