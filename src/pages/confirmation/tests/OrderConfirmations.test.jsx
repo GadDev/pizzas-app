@@ -6,11 +6,11 @@ import OrderConfirmation from '../OrderConfirmation';
 
 test('error response server for submit order POST error request', async () => {
 	//override default msw response with error response
-	server.resetHandlers(
+	server.resetHandlers([
 		rest.post('http://localhost:3030/order', (req, res, ctx) => {
 			res(ctx.status(500));
-		})
-	);
+		}),
+	]);
 
 	render(<OrderConfirmation setPhase={() => jest.fn()} />);
 
