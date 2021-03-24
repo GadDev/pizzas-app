@@ -38,4 +38,7 @@ test('no update total if pizzas input is invalid', () => {
 	const americanPizza = await screen.findByRole('spinbutton', { name: 'American'});
 	userEvent.clear(americanPizza);
 	userEvent.type(americanPizza, '-1')
+
+	// pizzas subtotal not updated
+	const pizzasSubTotal = screen.getByText('Pizzas total: $0.00')
 });
