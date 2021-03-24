@@ -6,14 +6,17 @@ const PizzaOption = ({ name, image, updateItemCount }) => {
 	const [valid, setValid] = useState(true);
 	const handleChange = (e) => {
 		const currentValue = e.target.value;
-		updateItemCount(name, currentValue);
-
 		const currentFloatValue = parseFloat(currentValue);
-		setValid(
-			0 >= currentFloatValue &&
-				currentFloatValue <= 10 &&
-				Math.floor(currentFloatValue) === currentFloatValue
-		);
+		let isValid =
+			0 <= currentFloatValue &&
+			currentFloatValue <= 10 &&
+			Math.floor(currentFloatValue) === currentFloatValue;
+		
+		setValid(isValid);
+
+		if (isValid) {
+			updateItemCount(name, currentValue);
+		}
 	};
 
 	return (
@@ -36,6 +39,7 @@ const PizzaOption = ({ name, image, updateItemCount }) => {
 						type='number'
 						defaultValue={0}
 						onChange={handleChange}
+						isInvalid={!valid}
 					/>
 				</Col>
 			</Form.Group>
