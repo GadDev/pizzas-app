@@ -29,3 +29,7 @@ test('display image for each toppings option from server', async () => {
 		'Olive topping',
 	]);
 });
+
+test('no update total if pizzas input is invalid', () => {
+	
+})
