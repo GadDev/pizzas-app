@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import { render, screen } from '../../../test-utils/testing-library-utils';
 import Options from '../Options';
 
@@ -34,5 +35,6 @@ test('no update total if pizzas input is invalid', () => {
 	render(<Options optionType='pizzas' />);
 
 	//expect btn to be enabled after adding pizza
-	const americanPizza = await screen.findByRole('spinbutton', { name: 'American'})
+	const americanPizza = await screen.findByRole('spinbutton', { name: 'American'});
+	userEvent.clear(americanPizza)
 });
