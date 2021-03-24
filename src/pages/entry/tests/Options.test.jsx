@@ -31,5 +31,5 @@ test('display image for each toppings option from server', async () => {
 });
 
 test('no update total if pizzas input is invalid', () => {
-	
-})
+	render(<Options optionType='pizzas' />);
+});
